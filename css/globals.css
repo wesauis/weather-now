@@ -31,4 +31,8 @@ div {
   display: -ms-flexbox;
   display: flex;
 }
+
+#temp {
+  cursor: pointer;
+}
 /*# sourceMappingURL=globals.css.map */
