@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: #1a2980;
+  background-image: linear-gradient(120deg, #30cfd0 0%, #23077c 100%);
+  color: white;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 3;
+      grid-template-rows: 3;
+  -ms-grid-columns: 2;
+      grid-template-columns: 2;
+      grid-template-areas: "geo geo" "tmp icn" "dsc dsc";
+}
+
+#geo,
+#temp,
+#desc,
+#icn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Lexend Deca", sans-serif;
+}
+
+#geo {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: geo;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#geo h6 {
+  font-size: 20px;
+}
+
+#geo h3 {
+  font-size: 48px;
+}
+
+#icn {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: icn;
+}
+
+#temp {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: tmp;
+  font-size: 64px;
+}
+
+#desc {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: dsc;
+  font-size: 56px;
+}
+/*# sourceMappingURL=styles.css.map */

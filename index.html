@@ -1,1 +1,36 @@
-<h2>WeatherPage</h2>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script src="./scripts/skycons.js"></script>
+
+    <title>Weather Now</title>
+  </head>
+  <body>
+    <div id="geo">
+      <h6>geolocation:</h6>
+      <h3>coords</h3>
+    </div>
+
+    <div id="temp">
+      <h1 id="degree">10</h1>
+      <h1 id="unit">°C</h1>
+    </div>
+
+    <div id="icn">
+      <canvas id="icon" width="189" height="189"></canvas>
+    </div>
+
+    <h2 id="desc">description</h2>
+
+    <script src="./scripts/app.js"></script>
+  </body>
+</html>
