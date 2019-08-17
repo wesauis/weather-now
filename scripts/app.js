@@ -7,7 +7,7 @@
   const response = await getForecast(lat, lon);
   if (!response) return;
   const { icon, summary, temperature } = response;
-  log('Weather forecast obtained');
+  log('Weather forecast obtained', 'forecast');
 
   // set geolocation
   const latCoord = document.querySelector('#geo #lat');
@@ -23,17 +23,31 @@
     const degree = document.querySelector('#temp #degree');
     const unit = document.querySelector('#temp #unit');
 
-    let isC = unit.innerHTML === '??' ? true : unit.innerHTML === 'ºC';
+    const buffer = document.querySelector('#temp #buffer');
+    const showC = buffer.innerHTML;
 
-    degree.innerHTML = isC
-      ? temperature.toFixed(2)
-      : (((temperature - 32) * 5) / 9).toFixed(2);
-    unit.innerHTML = isC ? 'ºF' : 'ºC';
+    degree.innerHTML =
+      showC == 'true'
+        ? (((temperature - 32) * 5) / 9).toFixed(2)
+        : temperature.toFixed(2);
+    unit.innerHTML = showC == 'true' ? 'ºC' : 'ºF';
+
+    buffer.innerHTML = showC != 'true';
+    if (typeof Storage !== undefined)
+      localStorage.setItem('defaultIsC', showC == 'true');
   }
 
   document
     .querySelector('#temp')
     .addEventListener('click', () => swap(temperature));
+
+  const buffer = document.querySelector('#temp #buffer');
+  if (
+    typeof Storage !== undefined &&
+    localStorage.getItem('defaultIsC') != undefined
+  )
+    buffer.innerHTML = localStorage.getItem('defaultIsC');
+
   swap(temperature);
 
   setIcon(icon);
