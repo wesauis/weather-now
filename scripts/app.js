@@ -19,15 +19,22 @@
   const description = document.querySelector('#desc');
   description.innerHTML = summary;
 
-  // set degree
-  // TODO(wesauis): toggle ºC / ºF
-  // async function degreeSwap() {
-  // }
-  const degree = document.querySelector('#temp #degree');
-  degree.innerHTML = temperature;
-  // ºF
-  const temp = document.querySelector('#temp #unit');
-  temp.innerHTML = 'ºF';
+  function swap(temperature) {
+    const degree = document.querySelector('#temp #degree');
+    const unit = document.querySelector('#temp #unit');
 
-  await setIcon(icon);
+    let isC = unit.innerHTML === '??' ? true : unit.innerHTML === 'ºC';
+
+    degree.innerHTML = isC
+      ? temperature.toFixed(2)
+      : (((temperature - 32) * 5) / 9).toFixed(2);
+    unit.innerHTML = isC ? 'ºF' : 'ºC';
+  }
+
+  document
+    .querySelector('#temp')
+    .addEventListener('click', () => swap(temperature));
+  swap(temperature);
+
+  setIcon(icon);
 })();
