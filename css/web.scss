@@ -1,27 +1,11 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html,
 body {
-  width: 100%;
-  height: 100%;
-}
-
-body {
-  background: #1a2980;
-  background-image: linear-gradient(120deg, #30cfd0 0%, #23077c 100%);
-  color: white;
-
   display: grid;
   grid-template-rows: 3;
   grid-template-columns: 2;
   grid-template-areas:
-    "geo geo"
-    "tmp icn"
-    "dsc dsc";
+    'geo geo'
+    'tmp icn'
+    'dsc dsc';
 }
 
 #geo,
@@ -33,22 +17,26 @@ body {
   justify-items: center;
   align-content: center;
   align-items: center;
-
-  font-family: "Bree Serif", serif;
 }
-
-//  64x = 20.100
 
 #geo {
   grid-area: geo;
   flex-direction: column;
 
   h6 {
-    font-size: 20px;
+    font-size: calc(2px + 1.5vw);
   }
 
-  h3 {
-    font-size: 48px;
+  #coord {
+    flex-direction: row;
+
+    #lat {
+      padding-right: 20px;
+    }
+
+    h3 {
+      font-size: calc(2px + 3vw);
+    }
   }
 }
 
@@ -59,11 +47,11 @@ body {
 #temp {
   grid-area: tmp;
 
-  font-size: 60px;
+  font-size: calc(2px + 4vw);
 }
 
 #desc {
   grid-area: dsc;
 
-  font-size: 56px;
+  font-size: calc(2px + 3.6vw);
 }

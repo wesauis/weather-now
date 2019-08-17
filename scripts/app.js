@@ -10,8 +10,10 @@
   log('Weather forecast obtained');
 
   // set geolocation
-  const coords = document.querySelector('#geo h3');
-  coords.innerHTML = `lat: ${lat.toFixed(2)}  lon: ${lon.toFixed(2)}`;
+  const latCoord = document.querySelector('#geo #lat');
+  latCoord.innerHTML = `lat: ${lat.toFixed(2)}`;
+  const lonCoord = document.querySelector('#geo #lon');
+  lonCoord.innerHTML = `lon: ${lon.toFixed(2)}`;
 
   // set description
   const description = document.querySelector('#desc');
