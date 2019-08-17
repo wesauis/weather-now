@@ -4,7 +4,7 @@
   const { latitude: lat, longitude: lon } = position.coords;
 
   const apiKey = "72f8ea053a2b1d9bb5209c9d4935727";
-  const apiUrl = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${apiKey}/${lat},${lon}/?exclude=minutely,hourly,daily,alerts,flags`;
+  const apiUrl = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${apiKey}/${lat},${lon}`;
 
   const response = await fetch(apiUrl);
   if (!response) return;
