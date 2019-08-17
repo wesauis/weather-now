@@ -1,45 +1,31 @@
 (async function() {
   const position = await getGeo();
-
+  if (!position) return;
   const { latitude: lat, longitude: lon } = position.coords;
+  log(`Geolocation: ${lat}, ${lon}`, 'geolocation');
 
-  const apiKey = "72f8ea053a2b1d9bb5209c9d4935727";
-  const apiUrl = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${apiKey}/${lat},${lon}`;
-
-  const response = await fetch(apiUrl);
+  const response = await getForecast(lat, lon);
   if (!response) return;
-
-  const {
-    currently: { icon, summary, temperature }
-  } = await response.json();
+  const { icon, summary, temperature } = response;
+  log('Weather forecast obtained');
 
   // set geolocation
-  const coords = document.querySelector("#geo h3");
-  coords.innerHTML = `lat: ${lat}  lon: ${lon}`;
+  const coords = document.querySelector('#geo h3');
+  coords.innerHTML = `lat: ${lat.toFixed(2)}  lon: ${lon.toFixed(2)}`;
 
-  //
-  const description = document.querySelector("#desc");
+  // set description
+  const description = document.querySelector('#desc');
   description.innerHTML = summary;
 
-  // degree
-  const degree = document.querySelector("#temp #degree");
-  degree.innerHTML = degree;
-
+  // set degree
+  // TODO(wesauis): toggle ºC / ºF
+  // async function degreeSwap() {
+  // }
+  const degree = document.querySelector('#temp #degree');
+  degree.innerHTML = temperature;
   // ºF
-  const temp = document.querySelector("#temp unit");
-  temp.innerHTML = temperature;
+  const temp = document.querySelector('#temp #unit');
+  temp.innerHTML = 'ºF';
 
-  // set icon
-  var skycons = new Skycons({ color: "white" });
-  skycons.add("icon", Skycons[icon.replace("-", "_").toUpperCase()]);
-  skycons.play();
-
-  async function getGeo() {
-    if (!("geolocation" in navigator)) {
-      return null;
-    }
-    return new Promise((resolve, reject, options = {}) => {
-      navigator.geolocation.getCurrentPosition(resolve, reject, options);
-    }).catch(error => console.error(error));
-  }
+  await setIcon(icon);
 })();
