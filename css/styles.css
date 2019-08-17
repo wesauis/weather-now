@@ -34,10 +34,13 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  justify-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-family: "Lexend Deca", sans-serif;
+  font-family: "Bree Serif", serif;
 }
 
 #geo {
@@ -69,7 +72,7 @@ body {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: tmp;
-  font-size: 64px;
+  font-size: 60px;
 }
 
 #desc {

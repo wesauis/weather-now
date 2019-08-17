@@ -30,10 +30,14 @@ body {
 #icn {
   display: flex;
   justify-content: center;
+  justify-items: center;
+  align-content: center;
   align-items: center;
 
-  font-family: "Lexend Deca", sans-serif;
+  font-family: "Bree Serif", serif;
 }
+
+//  64x = 20.100
 
 #geo {
   grid-area: geo;
@@ -55,7 +59,7 @@ body {
 #temp {
   grid-area: tmp;
 
-  font-size: 64px;
+  font-size: 60px;
 }
 
 #desc {
