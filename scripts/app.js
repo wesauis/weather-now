@@ -1,5 +1,5 @@
 (async function() {
-  let degreeUnityIsC = 'true';
+  let degreeUnityIsC = true;
   const querry = document.querySelector.bind(document);
 
   const position = await getGeo();
@@ -27,14 +27,14 @@
     const unit = querry('.temp-sec #unity');
 
     degree.innerHTML =
-      degreeUnityIsC == 'true'
+      degreeUnityIsC == true
         ? (((temperature - 32) * 5) / 9).toFixed(2)
         : temperature.toFixed(2);
-    unit.innerHTML = degreeUnityIsC == 'true' ? 'ºC' : 'ºF';
+    unit.innerHTML = degreeUnityIsC == true ? 'ºC' : 'ºF';
 
-    degreeUnityIsC = degreeUnityIsC != 'true';
+    degreeUnityIsC = degreeUnityIsC != true;
     if (typeof Storage !== undefined)
-      localStorage.setItem('defaultIsC', degreeUnityIsC == 'true');
+      localStorage.setItem('defaultIsC', degreeUnityIsC == true);
   }
 
   document
@@ -45,7 +45,7 @@
     typeof Storage !== undefined &&
     localStorage.getItem('defaultIsC') != undefined
   )
-    degreeUnityIsC = localStorage.getItem('defaultIsC');
+    degreeUnityIsC = localStorage.getItem('defaultIsC') != 'true';
 
   swap(temperature);
 
