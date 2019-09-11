@@ -1,0 +1,26 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.geo-sec {
+  flex-direction: column;
+}
+.geo-sec * {
+  font-size: calc(2px + 3.2vw);
+}
+.geo-sec .coord-sec {
+  flex-direction: column;
+}
+.geo-sec .coord-sec * {
+  font-size: calc(2px + 5.3vw);
+}
+
+.temp-sec {
+  font-size: calc(2px + 6vw);
+}
+
+#description {
+  font-size: calc(2px + 5.6vw);
+}
