@@ -4,32 +4,27 @@
   "description": "know how the weather is now",
   "icons": [
     {
-      "src": "assets/favicon-16x16.png",
+      "src": "icons/16.png",
       "sizes": "16x16",
       "type": "image/png"
     },
     {
-      "src": "assets/favicon-32x32.png",
+      "src": "icons/32.png",
       "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "assets/favicon-128.png",
+      "src": "icons/128.png",
       "sizes": "128x128",
       "type": "image/png"
     },
     {
-      "src": "assets/mstile-144x144.png",
+      "src": "icons/144.png",
       "sizes": "144x144",
       "type": "image/png"
     },
     {
-      "src": "assets/apple-touch-icon-144x144.png",
-      "sizes": "144x144",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/favicon-196x196.png",
+      "src": "icons/196.png",
       "sizes": "196x196",
       "type": "image/png"
     }

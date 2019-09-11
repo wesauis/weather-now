@@ -1,4 +1,7 @@
 (async function() {
+  let degreeUnityIsC = true;
+  const querry = document.querySelector.bind(document);
+
   const position = await getGeo();
   if (!position) return;
   const { latitude: lat, longitude: lon } = position.coords;
@@ -10,43 +13,39 @@
   log('Weather forecast obtained', 'forecast');
 
   // set geolocation
-  const latCoord = document.querySelector('#geo #lat');
+  const latCoord = querry('.geo-sec #lat');
   latCoord.innerHTML = `lat: ${lat.toFixed(2)}`;
-  const lonCoord = document.querySelector('#geo #lon');
+  const lonCoord = querry('.geo-sec #lon');
   lonCoord.innerHTML = `lon: ${lon.toFixed(2)}`;
 
   // set description
-  const description = document.querySelector('#desc');
+  const description = querry('#description');
   description.innerHTML = summary;
 
   function swap(temperature) {
-    const degree = document.querySelector('#temp #degree');
-    const unit = document.querySelector('#temp #unit');
-
-    const buffer = document.querySelector('#temp #buffer');
-    const showC = buffer.innerHTML;
+    const degree = querry('.temp-sec #degree');
+    const unit = querry('.temp-sec #unity');
 
     degree.innerHTML =
-      showC == 'true'
+      degreeUnityIsC == true
         ? (((temperature - 32) * 5) / 9).toFixed(2)
         : temperature.toFixed(2);
-    unit.innerHTML = showC == 'true' ? 'ºC' : 'ºF';
+    unit.innerHTML = degreeUnityIsC == true ? 'ºC' : 'ºF';
 
-    buffer.innerHTML = showC != 'true';
+    degreeUnityIsC = degreeUnityIsC != true;
     if (typeof Storage !== undefined)
-      localStorage.setItem('defaultIsC', showC == 'true');
+      localStorage.setItem('defaultIsC', degreeUnityIsC == true);
   }
 
   document
-    .querySelector('#temp')
+    .querySelector('.temp-sec')
     .addEventListener('click', () => swap(temperature));
 
-  const buffer = document.querySelector('#temp #buffer');
   if (
     typeof Storage !== undefined &&
     localStorage.getItem('defaultIsC') != undefined
   )
-    buffer.innerHTML = localStorage.getItem('defaultIsC');
+    degreeUnityIsC = localStorage.getItem('defaultIsC') != 'true';
 
   swap(temperature);
 
