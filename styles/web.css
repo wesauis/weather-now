@@ -1,6 +1,9 @@
 #loading {
   font-size: calc(2vh + 2vw);
 }
+.reload-sec #reload {
+  max-height: 55px;
+}
 
 #app {
   display: grid;

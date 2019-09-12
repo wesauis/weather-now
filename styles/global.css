@@ -38,7 +38,6 @@ div {
   top: 2%;
   right: 2%;
   margin: 5px;
-  max-height: 85px;
   filter: drop-shadow(3px 3px 6px #00000070);
   opacity: 0.3;
 }

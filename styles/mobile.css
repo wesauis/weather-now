@@ -1,6 +1,9 @@
 #loading {
   font-size: 5vw;
 }
+.reload-sec #reload {
+  max-height: 35px;
+}
 
 #app {
   display: flex;
