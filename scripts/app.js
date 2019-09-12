@@ -1,11 +1,13 @@
-(async function() {
-  let degreeUnityIsC = true;
-  const querry = document.querySelector.bind(document);
+async function start() {
+  try {
+    const { latitude, longitude } = await getGeo().then(pos => pos.coords);
+    console.log(`Geolocation: ${latitude}, ${longitude}`);
 
-  const position = await getGeo();
-  if (!position) return;
-  const { latitude: lat, longitude: lon } = position.coords;
-  log(`Geolocation: ${lat}, ${lon}`, 'geolocation');
+    const { icon, summary, temperature } = await getForecast(
+      latitude,
+      longitude
+    ).then(forecast => forecast.currently);
+    console.log('Weather forecast obtained');
 
   const response = await getForecast(lat, lon);
   if (!response) return;
@@ -22,20 +24,24 @@
   const description = querry('#description');
   description.innerHTML = summary;
 
-  function swap(temperature) {
-    const degree = querry('.temp-sec #degree');
-    const unit = querry('.temp-sec #unity');
+    setIcon(icon).then(() => console.log('Weather Icon Set'));
+  } catch (error) {
+    switch (error) {
+      case ERROR.NO_GEOLOCATION_SUPPORT:
+        console.log(error);
+        break;
+      case ERROR.CANT_GET_GEOLOCATION:
+        console.log(error);
+        break;
+      case ERROR.CANT_FETCH_FORECAST:
+        console.log(error);
+        break;
 
-    degree.innerHTML =
-      degreeUnityIsC == true
-        ? (((temperature - 32) * 5) / 9).toFixed(2)
-        : temperature.toFixed(2);
-    unit.innerHTML = degreeUnityIsC == true ? 'ºC' : 'ºF';
-
-    degreeUnityIsC = degreeUnityIsC != true;
-    if (typeof Storage !== undefined)
-      localStorage.setItem('defaultIsC', degreeUnityIsC == true);
+      default:
+        console.error(error);
+    }
   }
+}
 
   document
     .querySelector('.temp-sec')

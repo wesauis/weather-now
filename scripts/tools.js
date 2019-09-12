@@ -1,12 +1,19 @@
-function log(message, from = 'app.js', level = 'INFO') {
-  console.log(`[${from}] [${level.toUpperCase()}] `, message);
-}
+const ERROR = {
+  NO_GEOLOCATION_SUPPORT: 'NO_GEOLOCATION_SUPPORT',
+  CANT_GET_GEOLOCATION: 'CANT_GET_GEOLOCATION',
+  CANT_FETCH_FORECAST: 'CANT_FETCH_FORECAST',
+};
 
 const $ = document.querySelector.bind(document);
 
-  const apiOpt = 'exclude=minutely,hourly,daily,alerts,flags';
-  const proxy = 'https://cors-anywhere.herokuapp.com/';
-  const apiReqUrl = `${proxy}${apiUrl}/${lat},${lon}?${apiOpt}`;
+async function getGeo() {
+  if (!('geolocation' in navigator)) throw ERROR.NO_GEOLOCATION_SUPPORT;
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  }).catch(() => {
+    throw ERROR.CANT_GET_GEOLOCATION;
+  });
+}
 
 async function getForecast(latitude, longitude) {
   // only use cors-anywhere if https is off
@@ -14,14 +21,13 @@ async function getForecast(latitude, longitude) {
   const API_URL = `${proxy}https://api.darksky.net/forecast/${DARKSKY_APIKEY}`;
   const options = 'exclude=minutely,hourly,daily,alerts,flags';
 
-  if (response.status !== 200) {
-    log(
-      `Error getting weather forecast, status: ${response.status}`,
-      'forecast',
-      'error'
-    );
-    return undefined;
-  }
+  const request = `${API_URL}/${latitude},${longitude}?${options}`;
+  return await fetch(request)
+    .then(res => res.json())
+    .catch(() => {
+      throw ERROR.CANT_FETCH_FORECAST;
+    });
+}
 
   return (await response.json()).currently;
 }
