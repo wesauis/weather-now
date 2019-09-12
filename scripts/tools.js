@@ -16,9 +16,7 @@ async function getGeo() {
 }
 
 async function getForecast(latitude, longitude) {
-  // only use cors-anywhere if https is off
-  const proxy = location.protocol === 'https:' ? '' : PROXY;
-  const API_URL = `${proxy}https://api.darksky.net/forecast/${DARKSKY_APIKEY}`;
+  const API_URL = `${PROXY}https://api.darksky.net/forecast/${DARKSKY_APIKEY}`;
   const options = 'exclude=minutely,hourly,daily,alerts,flags';
 
   const request = `${API_URL}/${latitude},${longitude}?${options}`;
