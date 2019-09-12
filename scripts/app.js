@@ -2,13 +2,12 @@ async function start() {
   try {
     const { latitude, longitude } = await getGeo().then(pos => pos.coords);
     console.log(`Geolocation: ${latitude}, ${longitude}`);
-
     const { icon, summary, temperature } = await getForecast(
       latitude,
       longitude
     ).then(forecast => forecast.currently);
     console.log('Weather forecast obtained');
-
+    // FETCH: SUCESS
     setThings({
       latitude,
       longitude,
@@ -16,23 +15,22 @@ async function start() {
       summary,
       temperature,
     });
-
-    $('#app').classList.toggle('hidden');
   } catch (error) {
-    switch (error) {
-      case ERROR.NO_GEOLOCATION_SUPPORT:
-        console.log(error);
-        break;
-      case ERROR.CANT_GET_GEOLOCATION:
-        console.log(error);
-        break;
-      case ERROR.CANT_FETCH_FORECAST:
-        console.log(error);
-        break;
+    const help = $('#loading #help');
+    help.classList.toggle('hidden');
+    const helpLink =
+      'https://github.com/wesauis/weather-now/blob/master/HELP.md';
+    const message = $('#loading #message');
 
-      default:
-        console.error(error);
+    console.error(ERROR[error]);
+    if (ERROR[error] === undefined) {
+      message.innerHTML = 'UNKNOWN_ERROR';
+      help.href = helpLink;
+      return;
     }
+
+    message.innerHTML = `error: ${ERROR[error]}`;
+    help.href = `${helpLink}#${ERROR[error]}`;
   }
 }
 
