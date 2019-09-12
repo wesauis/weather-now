@@ -14,8 +14,15 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 html,
-body {
+body,
+#app {
   height: 100%;
+}
+html,
+body,
+#app,
+#loading {
+  overflow: hidden;
   background: #2a6ea7;
 
   color: white;
@@ -43,4 +50,49 @@ div {
 }
 .temp-sec #degree {
   cursor: pointer;
+}
+
+#loading #help {
+  border-radius: 20px;
+  margin: 10px;
+  padding: 12px;
+  text-decoration: none;
+  color: #000000;
+  background: #fffffffa;
+}
+
+/* Animations */
+.auto-overflow {
+  overflow: auto;
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+.animated-hide {
+  animation: reveal 0.6s linear reverse;
+}
+
+.animated-show {
+  animation: reveal 2s linear;
+}
+
+#loading {
+  font-size: 25px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
 }

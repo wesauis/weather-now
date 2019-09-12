@@ -42,23 +42,31 @@
     <link rel="stylesheet" href="./styles/global.css" />
   </head>
   <body>
-    <div class="geo-sec">
-      <h6>geolocation:</h6>
-      <div class="coord-sec">
-        <h3 id="lat">lat</h3>
-        <h3 id="lon">lon</h3>
+    <div id="loading">
+      <img src="./icons/loading.gif" alt="Loading..." />
+      <p id="message">getting weather forecast...</p>
+      <a id="help" href="#" class="hidden">Help Me!</a>
+    </div>
+
+    <div id="app" class="hidden">
+      <div class="geo-sec">
+        <h6>geolocation:</h6>
+        <div class="coord-sec">
+          <h3 id="lat">lat</h3>
+          <h3 id="lon">lon</h3>
+        </div>
       </div>
-    </div>
 
-    <div class="icon-sec">
-      <canvas id="icon" width="189" height="189"></canvas>
-    </div>
+      <div class="icon-sec">
+        <canvas id="icon" width="189" height="189"></canvas>
+      </div>
 
-    <div class="temp-sec">
-      <h1 id="degree">??°C</h1>
-    </div>
+      <div class="temp-sec">
+        <h1 id="degree">??°C</h1>
+      </div>
 
-    <h2 id="description">description</h2>
+      <h2 id="description">description</h2>
+    </div>
 
     <script src="./scripts/tools.js"></script>
     <script src="./scripts/config.js"></script>

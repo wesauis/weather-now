@@ -1,17 +1,17 @@
 const ERROR = {
-  NO_GEOLOCATION_SUPPORT: 'NO_GEOLOCATION_SUPPORT',
-  CANT_GET_GEOLOCATION: 'CANT_GET_GEOLOCATION',
-  CANT_FETCH_FORECAST: 'CANT_FETCH_FORECAST',
+  'no-geolocation-support': 'no-geolocation-support',
+  'cant-get-geolocation': 'cant-get-geolocation',
+  'cant-fetch-forecast': 'cant-fetch-forecast',
 };
 
 const $ = document.querySelector.bind(document);
 
 async function getGeo() {
-  if (!('geolocation' in navigator)) throw ERROR.NO_GEOLOCATION_SUPPORT;
+  if (!('geolocation' in navigator)) throw ERROR['no-geolocation-support'];
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(resolve, reject);
   }).catch(() => {
-    throw ERROR.CANT_GET_GEOLOCATION;
+    throw ERROR['cant-get-geolocation'];
   });
 }
 
@@ -23,7 +23,7 @@ async function getForecast(latitude, longitude) {
   return await fetch(request)
     .then(res => res.json())
     .catch(() => {
-      throw ERROR.CANT_FETCH_FORECAST;
+      throw ERROR['cant-fetch-forecast'];
     });
 }
 
