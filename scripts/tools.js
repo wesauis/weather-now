@@ -2,8 +2,7 @@ function log(message, from = 'app.js', level = 'INFO') {
   console.log(`[${from}] [${level.toUpperCase()}] `, message);
 }
 
-async function getForecast(lat, lon) {
-  const apiUrl = `https://api.darksky.net/forecast/${DARKSKY_APIKEY}`;
+const $ = document.querySelector.bind(document);
 
   const apiOpt = 'exclude=minutely,hourly,daily,alerts,flags';
   const proxy = 'https://cors-anywhere.herokuapp.com/';
