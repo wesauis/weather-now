@@ -17,6 +17,12 @@ html,
 body,
 #app {
   height: 100%;
+}
+html,
+body,
+#app,
+#loading {
+  overflow: hidden;
   background: #2a6ea7;
 
   color: white;
@@ -25,10 +31,6 @@ body,
 }
 div {
   display: flex;
-}
-
-.hidden {
-  visibility: hidden;
 }
 
 .geo-sec,
@@ -50,10 +52,40 @@ div {
   cursor: pointer;
 }
 
-/* Animations */
+#loading #help {
+  border-radius: 20px;
+  margin: 10px;
+  padding: 12px;
+  text-decoration: none;
+  color: #000000;
+  background: #fffffffa;
+}
 
-#app {
-  animation: reveal 3s linear;
+/* Animations */
+.auto-overflow {
+  overflow: auto;
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+.animated-hide {
+  animation: reveal 0.6s linear reverse;
+}
+
+.animated-show {
+  animation: reveal 2s linear;
+}
+
+#loading {
+  font-size: 25px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
 }
 
 @keyframes reveal {
