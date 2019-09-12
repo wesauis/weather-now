@@ -1,4 +1,6 @@
 async function start() {
+  $('#reload').onclick = location.reload.bind(location);
+
   try {
     const { latitude, longitude } = await getGeo().then(pos => pos.coords);
     console.log(`Geolocation: ${latitude}, ${longitude}`);

@@ -33,6 +33,19 @@ div {
   display: flex;
 }
 
+.reload-sec #reload {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  margin: 5px;
+  max-height: 85px;
+  filter: drop-shadow(3px 3px 6px #00000070);
+  opacity: 0.3;
+}
+#reload:hover {
+  opacity: 1;
+}
+
 .geo-sec,
 .temp-sec,
 #description,
@@ -52,7 +65,7 @@ div {
   filter: drop-shadow(4px 4px 6px #00000060);
   padding: 40px;
   padding-bottom: 0px;
-  max-height: calc(22vw + 22vh);
+  max-height: calc(15vw + 15vh);
 }
 .temp-sec #degree {
   cursor: pointer;
