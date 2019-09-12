@@ -21,8 +21,11 @@ async function start() {
   lonCoord.innerHTML = `lon: ${lon.toFixed(2)}`;
 
   // set description
-  const description = querry('#description');
-  description.innerHTML = summary;
+    $('#description').innerHTML = summary;
+    // set degree and add option to swap beetwen ºC and ºF onClick
+    const degreeEl = $('.temp-sec #degree');
+    const swapper = new DegreeSwapper(degreeEl, temperature);
+    degreeEl.addEventListener('click', () => swapper.swap(false));
 
     setIcon(icon).then(() => console.log('Weather Icon Set'));
   } catch (error) {

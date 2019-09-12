@@ -29,17 +29,19 @@ async function getForecast(latitude, longitude) {
     });
 }
 
-  return (await response.json()).currently;
-}
+function DegreeSwapper(DOMElement, fahrenheit) {
+  const KEY = 'weather-now.defaultUnity';
+  const CAN_SAVE = typeof Storage !== undefined;
+  const degC = `${(((fahrenheit - 32) * 5) / 9).toFixed(2)}ºC`;
+  const degF = `${fahrenheit.toFixed(2)}ºF`;
+  let degreeUnity = (CAN_SAVE && localStorage.getItem(KEY)) || 'ºC';
 
-async function getGeo() {
-  if (!('geolocation' in navigator)) {
-    log('Browser does not support geolocation', 'error');
-    return;
-  }
-  return new Promise((resolve, reject, options = {}) => {
-    navigator.geolocation.getCurrentPosition(resolve, reject, options);
-  }).catch(error => log(error.message, 'geolocation', 'error'));
+  this.swap = (onlySet = false) => {
+    if (!onlySet) degreeUnity = degreeUnity !== 'ºC' ? 'ºC' : 'ºF';
+    DOMElement.innerHTML = degreeUnity === 'ºC' ? degC : degF;
+    if (CAN_SAVE) localStorage.setItem(KEY, degreeUnity);
+  };
+  this.swap(true);
 }
 
 async function setIcon(icon) {
