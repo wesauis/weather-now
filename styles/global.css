@@ -41,6 +41,6 @@ div {
 .icon-sec {
   filter: drop-shadow(3px 3px 3px #00000045);
 }
-.temp-sec {
+.temp-sec #degree {
   cursor: pointer;
 }
