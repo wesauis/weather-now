@@ -9,9 +9,11 @@ async function getForecast(lat, lon) {
   const proxy = 'https://cors-anywhere.herokuapp.com/';
   const apiReqUrl = `${proxy}${apiUrl}/${lat},${lon}?${apiOpt}`;
 
-  const response = await fetch(apiReqUrl).catch(error =>
-    log(error.message, 'forecast', 'error')
-  );
+async function getForecast(latitude, longitude) {
+  // only use cors-anywhere if https is off
+  const proxy = location.protocol === 'https:' ? '' : PROXY;
+  const API_URL = `${proxy}https://api.darksky.net/forecast/${DARKSKY_APIKEY}`;
+  const options = 'exclude=minutely,hourly,daily,alerts,flags';
 
   if (response.status !== 200) {
     log(
