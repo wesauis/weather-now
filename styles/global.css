@@ -52,6 +52,7 @@ div {
   filter: drop-shadow(4px 4px 6px #00000060);
   padding: 40px;
   padding-bottom: 0px;
+  max-height: calc(22vw + 22vh);
 }
 .temp-sec #degree {
   cursor: pointer;
@@ -85,7 +86,6 @@ div {
 }
 
 #loading {
-  font-size: 25px;
   flex-direction: column;
   justify-content: center;
   align-items: center;

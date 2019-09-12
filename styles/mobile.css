@@ -1,3 +1,7 @@
+#loading {
+  font-size: 5vw;
+}
+
 #app {
   display: flex;
   flex-direction: column;
