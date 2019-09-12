@@ -5,10 +5,10 @@
 
 ## Overview
 
-This projet are made with HTML, CSS and JavaScript.<br/>
-Weather forecast data is obtained through the [DarkSky API](https://darksky.net/dev/docs).
-Font: [Lexand Deca](https://fonts.google.com/specimen/Lexend+Deca)
-Forecast Icons: [Skycons](https://darkskyapp.github.io/skycons/)
+- This projet are made with HTML, CSS and JavaScript.
+- Weather forecast data is obtained through the [DarkSky API](https://darksky.net/dev/docs).
+- Font: [Lexand Deca](https://fonts.google.com/specimen/Lexend+Deca)
+- Forecast Icons: [Skycons](https://darkskyapp.github.io/skycons/)
 
 ## Goals
 
