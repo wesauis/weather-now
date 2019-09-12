@@ -48,4 +48,14 @@ async function setThings({ latitude, longitude, summary, temperature, icon }) {
   degreeEl.addEventListener('click', () => swapper.swap(false));
   // setIcon
   setIcon(icon).then(() => console.log('Weather Icon Set'));
+  // animations
+  setTimeout(() => {
+    $('#loading').classList.toggle('animated-hide');
+    setTimeout(() => {
+      $('body').classList.toggle('auto-overflow');
+      $('#app').classList.toggle('hidden');
+      $('#app').classList.toggle('animated-show');
+      $('#loading').classList.toggle('hidden');
+    }, 600);
+  }, 1200);
 }
