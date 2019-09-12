@@ -40,6 +40,6 @@ async function getGeo() {
 async function setIcon(icon) {
   var skycons = new Skycons({ color: 'white' });
   const iconID = icon.replace(/-/g, '_').toUpperCase();
-  skycons.add('icon', Skycons[iconID]);
+  skycons.add('icon', Skycons[iconID || 'PARTLY_CLOUDY_DAY']);
   skycons.play();
 }
