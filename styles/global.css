@@ -45,7 +45,7 @@ div {
   text-align: center;
 }
 
-.icon-sec {
+.icon-sec, #loading img{
   filter: drop-shadow(3px 3px 3px #00000045);
 }
 .temp-sec #degree {
