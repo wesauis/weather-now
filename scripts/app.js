@@ -9,18 +9,10 @@ async function start() {
     ).then(forecast => forecast.currently);
     console.log('Weather forecast obtained');
 
-  const response = await getForecast(lat, lon);
-  if (!response) return;
-  const { icon, summary, temperature } = response;
-  log('Weather forecast obtained', 'forecast');
-
-  // set geolocation
-  const latCoord = querry('.geo-sec #lat');
-  latCoord.innerHTML = `lat: ${lat.toFixed(2)}`;
-  const lonCoord = querry('.geo-sec #lon');
-  lonCoord.innerHTML = `lon: ${lon.toFixed(2)}`;
-
-  // set description
+    // set geolocation
+    $('.geo-sec #lat').innerHTML = `lat: ${latitude.toFixed(2)}`;
+    $('.geo-sec #lon').innerHTML = `lon: ${longitude.toFixed(2)}`;
+    // set description
     $('#description').innerHTML = summary;
     // set degree and add option to swap beetwen ºC and ºF onClick
     const degreeEl = $('.temp-sec #degree');
@@ -45,18 +37,3 @@ async function start() {
     }
   }
 }
-
-  document
-    .querySelector('.temp-sec')
-    .addEventListener('click', () => swap(temperature));
-
-  if (
-    typeof Storage !== undefined &&
-    localStorage.getItem('defaultIsC') != undefined
-  )
-    degreeUnityIsC = localStorage.getItem('defaultIsC') != 'true';
-
-  swap(temperature);
-
-  setIcon(icon);
-})();
