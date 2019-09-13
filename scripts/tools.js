@@ -29,7 +29,7 @@ async function getForecast(latitude, longitude) {
 
 function DegreeSwapper(DOMElement, fahrenheit) {
   const KEY = 'weather-now.defaultUnity';
-  const CAN_SAVE = typeof Storage !== undefined;
+  const CAN_SAVE = typeof Storage !== 'undefined';
   const degC = `${(((fahrenheit - 32) * 5) / 9).toFixed(2)}ºC`;
   const degF = `${fahrenheit.toFixed(2)}ºF`;
   let degreeUnity = (CAN_SAVE && localStorage.getItem(KEY)) || 'ºC';
