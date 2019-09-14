@@ -26,30 +26,17 @@
     <!-- weather icons -->
     <script src="https://cdn.jsdelivr.net/gh/darkskyapp/skycons/skycons.js"></script>
 
-    <!-- styles for mobile portrait and small window (pc)-->
-    <link
-      media="screen and (max-width: 640px)"
-      href="./styles/mobile.css"
-      rel="stylesheet"
-    />
-    <!-- styles for mobile landscape and pc-->
-    <link
-      media="screen and (min-width: 640px)"
-      href="./styles/web.css"
-      rel="stylesheet"
-    />
-    <!-- global css -->
-    <link rel="stylesheet" href="./styles/global.css" />
+    <link rel="stylesheet" href="./styles/styles.css" />
   </head>
   <body>
-    <div id="loading">
-      <img src="./icons/loading.gif" alt="Loading..." />
+    <div id="loading" class="shaddow-font center">
+      <img class="shaddow-image" src="./icons/loading.gif" alt="Loading..." />
       <p id="message">getting weather forecast...</p>
       <a id="help" href="#" class="hidden">Help Me!</a>
     </div>
 
-    <div id="app" class="hidden">
-      <div class="geo-sec">
+    <div id="app" class="hidden shaddow-font center">
+      <div class="geo-sec center">
         <h6>geolocation:</h6>
         <div class="coord-sec">
           <h3 id="lat">lat</h3>
@@ -57,19 +44,15 @@
         </div>
       </div>
 
-      <div class="icon-sec">
+      <div class="icon-sec shaddow-image center">
         <canvas id="icon" width="189" height="189"></canvas>
       </div>
 
-      <div class="temp-sec">
+      <div class="temp-sec center">
         <h1 id="degree">??°C</h1>
       </div>
 
-      <h2 id="description">description</h2>
-    </div>
-
-    <div class="reload-sec">
-      <img id="reload" src="./icons/reload.png" alt="Reload" />
+      <h2 id="description" class="center">description</h2>
     </div>
 
     <script src="./scripts/tools.js"></script>
