@@ -91,6 +91,13 @@ body,
   }
   .geo-sec {
     grid-area: geo-sec;
+    .coord-sec {
+      display: flex;
+      flex-direction: row;
+      #lon {
+        margin-left: 1em;
+      }
+    }
   }
   .icon-sec {
     grid-area: icon-sec;
