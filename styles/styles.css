@@ -112,6 +112,18 @@ body,
     -ms-grid-column-span: 2;
     grid-area: geo-sec;
   }
+  .geo-sec .coord-sec {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .geo-sec .coord-sec #lon {
+    margin-left: 1em;
+  }
   .icon-sec {
     -ms-grid-row: 2;
     -ms-grid-column: 2;
