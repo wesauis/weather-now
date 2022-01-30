@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-
-import Wind from "../submodules/weather-icons/production/fill/svg/wind-alert.svg";
+import { Wind } from "../components/weather-icons";
 
 const Home: NextPage = () => {
   return (
