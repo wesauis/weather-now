@@ -1,9 +1,9 @@
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
+import { useEffect } from "react";
 import Weather from "../@types/forecast";
-import { PartlyCloudyDayFog } from "../components/weather-icons";
-
-// plan: SnapGrid
+import sg from "../styles/SnapGrid.module.css";
+import Summary from "../components/Summary";
 
 const temps = (forecastday: Weather.Forecastday[], day: number): number[] =>
   forecastday[day].hour.map((hour) => hour.temp_c);
@@ -16,35 +16,52 @@ const Home: NextPage<Weather.Forecast> = ({
   const min = Math.min(...temps(forecastday, current.is_day));
   const max = Math.max(...temps(forecastday, current.is_day));
 
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    if (!url.hash) {
+      url.hash = "summary";
+      window.location.href = url.toString();
+    }
+  }, []);
+
   return (
-    <div
-      className="
-        h-screen flex flex-col justify-center items-center
-        antialiased
-        bg-gradient-to-br from-pink-900 to-black"
-    >
-      <Head>
-        <title>Weather Now</title>
-      </Head>
-
-      <div>
-        <PartlyCloudyDayFog className="block text-[9rem] m-auto" />
+    <>
+      <div className={sg.root}>
+        <Head>
+          <title>Weather Now</title>
+        </Head>
+        <section className={sg.cell}>
+          <img src="//unsplash.it/251/250" alt="" />
+        </section>
+        <section className={sg.cell}>
+          <img src="//unsplash.it/250/251" alt="" />
+        </section>
+        <section className={sg.cell}>
+          <img src="//unsplash.it/252/250" alt="" />
+        </section>
+        <section className={sg.cell}>
+          <img src="//unsplash.it/250/252" alt="" />
+        </section>
+        <section id="summary" className={sg.cell}>
+          <Summary
+            location={location}
+            temps={{ temp: current.temp_c, min, max }}
+          />
+        </section>
+        <section className={sg.cell}>
+          <img src="//unsplash.it/250/253" alt="" />
+        </section>
+        <section className={sg.cell}>
+          <img src="//unsplash.it/254/250" alt="" />
+        </section>
+        <section className={sg.cell}>
+          <img src="//unsplash.it/255/250" alt="" />
+        </section>
+        <section className={sg.cell}>
+          <img src="//unsplash.it/250/255" alt="" />
+        </section>
       </div>
-
-      <div className="my-4">
-        <h1 className="text-4xl text-center text-white">{location.name}</h1>
-        <h1 className="text-xs text-center text-white">{location.region}</h1>
-      </div>
-
-      <div className="my-3 text-white flex">
-        <div className="h-fit text-7xl">{current.temp_c.toFixed(0)}</div>
-        <div>
-          <div className="text-2xl">°C</div>
-          <div className="text-sm">+{max.toFixed(0)}</div>
-          <div className="text-sm">−{min.toFixed(0)}</div>
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 

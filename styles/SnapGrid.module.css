@@ -1,0 +1,12 @@
+.root {
+  @apply snap-both snap-mandatory overflow-scroll max-h-screen
+         scroll-smooth
+         grid;
+  overflow: overlay;
+  grid-template-columns: repeat(3, 100vw);
+}
+
+.cell {
+  @apply snap-center 
+         w-screen h-screen;
+}
